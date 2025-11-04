@@ -21,3 +21,7 @@ logging:
   level:
     root: INFO
     org.hibernate.SQL: DEBUG
+
+jwt:
+  secret: "+Rf/H7ZlrkZIE+ybfDO1S5e6lAi/8gdSaQBoN4+zd2VY0mhnr+9owzks5aC3X0URvtzBXGy+iCAKbuROl11Cww=="
+  expiration-seconds: 86400
