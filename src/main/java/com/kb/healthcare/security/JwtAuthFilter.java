@@ -34,7 +34,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (email != null) {
                 UserDetails userDetails = userDetailsService.loadUserByUsername(email);
                 var authentication = new UsernamePasswordAuthenticationToken(
-                            userDetails, null, userDetails.getAuthorities());
+                        userDetails, null, userDetails.getAuthorities());
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
@@ -44,6 +44,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getRequestURI();
-        return path.startsWith("/api/auth/");
+        return path.startsWith("/api/auth/") ||
+                path.startsWith("/swagger") ||
+                path.startsWith("/v3/api-docs");
     }
 }
